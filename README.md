@@ -1,6 +1,6 @@
 ollama run llama3
 #ollama serve
-
+#uv run main.py
 langchain-agent/
 │
 ├── main.py                # Entry point (chat loop)
