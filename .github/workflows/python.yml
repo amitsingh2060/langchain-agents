@@ -1,0 +1,40 @@
+# Workflow name (appears in GitHub Actions tab)
+name: Python CI with UV
+# Run workflow whenever code is pushed to main branch
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    # GitHub will create a temporary Linux machine
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Step 1: Download your repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Python on the runner
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Step 3: Install uv package manager
+      - name: Install uv
+        run: |
+          pip install uv
+
+      # Step 4: Install dependencies using uv
+      # uv reads dependencies from pyproject.toml and uv.lock
+      - name: Install dependencies
+        run: |
+          uv sync
+
+      # Step 5: Run your program
+      - name: Run main script
+        run: |
+          uv run python main.py
