@@ -1,5 +1,6 @@
 # Workflow name (appears in GitHub Actions tab)
 name: Python CI with UV
+
 # Run workflow whenever code is pushed to main branch
 on:
   push:
@@ -25,16 +26,15 @@ jobs:
 
       # Step 3: Install uv package manager
       - name: Install uv
-        run: |
-          pip install uv
+        run: pip install uv
 
       # Step 4: Install dependencies using uv
       # uv reads dependencies from pyproject.toml and uv.lock
       - name: Install dependencies
-        run: |
-          uv sync
+        run: uv sync
 
-      # Step 5: Run your program
-      - name: Run main script
+      # Step 5: Verify project imports (instead of running Ollama)
+      # This ensures the code structure is valid without needing Ollama running
+      - name: Verify project imports
         run: |
-          uv run python main.py
+          uv run python - <<EOF
