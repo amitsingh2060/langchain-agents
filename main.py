@@ -120,8 +120,8 @@ def ask(question):
 
 while True:
 
-    question = input("You: ")
-
+    # question = input("You: ")
+    question = "What is LangChain?"
     if question.lower() in ["exit", "quit"]:
         print("AI: Goodbye 👋")
         break
