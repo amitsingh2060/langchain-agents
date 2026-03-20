@@ -9,6 +9,7 @@ dependencies = [
     "langchain>=1.2.10",
     "langchain-community>=0.4.1",
     "langchain-core>=1.2.19",
+    "langchain-groq>=1.1.2",
     "langchain-ollama>=1.0.1",
     "langchain-openai>=1.1.11",
     "langgraph>=1.1.2",
